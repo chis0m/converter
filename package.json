@@ -1,0 +1,24 @@
+{
+    "name": "converter",
+    "version": "1.0.0",
+    "description": "Convert html to PDF",
+    "main": "index.js",
+    "author": "chis0m",
+    "license": "ISC",
+
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:chis0m/converter.git"
+    },
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "client": "nodemon src/client.js"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.939.0",
+        "crypto": "^1.0.1",
+        "dotenv": "^10.0.0",
+        "puppeteer": "^5.5.0"
+    }
+}

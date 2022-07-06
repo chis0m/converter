@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        @font-face {
+            font-family: ax;
+            font-style: normal;
+            font-weight: 300;
+            /* src: local('Axiforma-Regular'); */
+            src: url('./fonts/Axiforma-Regular.otf');
+        }
+        @font-face {
+            font-family: axl;
+            font-style: normal;
+            font-weight: 400;
+            /* src: local('Axiforma-Light'); */
+            src: url('./fonts/Axiforma-Light.otf');
+        }
+        @font-face {
+            font-family: axt;
+            font-style: normal;
+            font-weight: 400;
+            /* src: local('Axiforma-Thin'); */
+            src: url('./fonts/Axiforma-Thin.otf');
+        }
+        @font-face {
+            font-family: axb;
+            font-style: normal;
+            font-weight: 700;
+            /* src: local('Axiforma-Bold'); */
+            src: url('./fonts/Axiforma-Bold.otf');
+        }
+        @font-face {
+            font-family: axsb;
+            font-style: normal;
+            font-weight: 700;
+            /* src: local('Axiforma-SemiBold'); */
+            src: url('./fonts/Axiforma-SemiBold.otf');
+        }
+        @font-face {
+            font-family: axm;
+            font-style: normal;
+            font-weight: 700;
+            /* src: local('Axiforma-Medium'); */
+            src: url('./fonts/Axiforma-Medium.otf');
+        }
+
+        body {
+            /*background-color: #eceff3;*/
+            background-color: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 750px; */
+        }
+        .bold {
+            font-family: axsb;
+        }
+        .title  {
+            color: #274FED;
+        }
+        .sub-title {
+            font-size: 13.4px;
+        }
+        .topic {
+            padding-bottom: 8px;
+            padding-bottom: 8px;
+        }
+        hr {
+            border-top: .1px solid #e8e8e8;
+            border-bottom: 0;
+            border-right: 0;
+            border-left: 0;
+            border-radius: 4px;
+
+        }
+        .text {
+            font-size: 10px;
+        }
+        .container {
+            background-color: white;
+            font-family: ax;
+            width: 800px;
+            /* width: 210mm; */
+            /*height: 297mm;*/
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: #f2f4fe;
+            border-top: 12px solid #274FED;
+            border-bottom: 2px solid #274FED;
+        }
+        .image-container {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .image-container .image {
+            width: 18%;
+        }
+        .heading {
+            display: flex;
+            justify-content: space-between;
+        }
+        .name-email {
+            width: 50%;
+        }
+        .name-email .name {
+            font-family: axsb;
+            font-size: 18.4px;
+        }
+        .name-email .email {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 12px;
+        }
+        .name-date {
+            width: 45%;
+        }
+        .name-date .name {
+            font-family: axsb;
+            font-size: 17px;
+        }
+        .name-date .date {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 10px;
+        }
+        section {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .div-table {
+            display: flex;
+            justify-content: space-between;
+        }
+        .div-table .cell {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+        }
+        .th {
+            font-size: 10px;
+            font-family: axsb;
+        }
+        .td {
+            font-size: 9px;
+            padding-top: 11px;
+            padding-bottom: 8px;
+        }
+        .thead{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+        .tdata {
+            width: 32%;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .payment .left .td {
+            font-size: 9px;
+            padding-top: 6px;
+            padding-bottom: 5px; 
+        }
+
+        .left {
+            width: 50%;
+        }
+        .right {
+            width: 40%;
+        }
+
+        .info-summary {
+            display: flex;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            justify-content: space-between;
+        }
+        .rewards-disclaimer {
+            display: flex;
+            padding-top: 20px;
+            padding-bottom: 4px;
+            justify-content: space-between;
+        }
+        .rewards-disclaimer .left {
+           width: 50%;
+        }
+        .rewards-disclaimer .right {
+            width: 45%;
+        }
+        .note {
+            font-size: 8.2px;
+            padding-top: 5px;
+            font-family: axl;
+        }
+        .right-text{
+            text-align: right;
+        }
+        .text-height {
+            line-height: 18px;
+        }
+        .transactions {
+            padding-top: 70px;
+            padding-bottom: 30px;
+            justify-content: space-between;
+        }
+        .transactions .heading {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .transactions .heading .left {
+            width: 20%;
+        }
+        .transactions .heading .right {
+            width: 65%;
+        }
+        .transactions .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .transactions .data-row span:first-child,
+        .transactions .data-row span:nth-child(2),
+        .transactions .data-row span:nth-child(5),
+        .transactions .data-row span:nth-child(3) {
+            width: 11%;
+        }
+
+        .transactions .data-row span:nth-child(4) {
+            width: 45%;
+        }
+
+        .transactions .text-height {
+            line-height: 14.7px;
+        }
+
+        .info-summary .right:nth-child(2)  {
+            width: 45%;
+        }
+
+        .conclusion {
+            padding-bottom: 70px;
+        }
+        @page {
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="image-container">
+                <div class="image">
+                    <svg viewBox='0 0 132 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M114.151 19.0467C114.151 18.3588 114.535 17.5431 114.981 17.232C116.767 15.9875 120.926 16.7863 120.926 19.0467C120.926 21.1102 116.912 22.1479 115.08 20.8933C114.589 20.5569 114.151 19.8388 114.151 19.0467ZM112.457 11.593C112.457 12.4877 113.145 13.189 114.019 13.189C114.406 13.189 117.485 10.8933 120.175 12.6239C121.009 13.1587 120.925 13.4984 120.925 14.7867C118.559 13.1688 114.736 13.4026 112.811 15.1499C110.682 17.084 110.863 21.2818 112.842 22.908C115.179 24.8303 118.601 24.8488 121.055 23.1704C121.216 23.7876 121.847 24.2753 122.555 24.1643C123.207 24.0618 123.791 23.4647 123.791 22.7718V13.4547C123.791 12.7551 123.427 11.9966 123.142 11.5896C120.217 7.40023 112.457 9.1779 112.457 11.593Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M85.0957 16.782C85.0957 11.9149 90.5273 9.9876 92.6133 14.6933C94.7059 19.4124 88.6898 23.9667 85.8497 19.34C85.4743 18.7296 85.0973 17.7289 85.0973 16.7804L85.0957 16.782ZM93.043 10.6603C92.6758 10.5594 92.5227 10.3677 92.2445 10.1457C90.5651 8.81203 88.1531 8.83053 86.3107 9.77065C82.5766 11.6744 80.8643 17.4228 84.1061 21.6525C85.8316 23.9011 88.9582 24.858 91.5711 23.5294C92.2461 23.1863 92.498 22.8785 93.043 22.5052C93.0891 24.6108 95.6493 24.2105 95.6493 22.638V6.93347C95.6493 5.30549 93.02 4.59241 93.0381 7.32701C93.0447 8.43699 93.043 9.54866 93.043 10.6603Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M105.423 14.7866H100.602V8.53034H105.423C108.918 8.53034 109.058 14.7866 105.423 14.7866ZM97.7355 7.3329V22.2386C97.7355 25.1061 100.602 24.4451 100.602 22.9046V17.8475C104.02 17.8475 107.087 18.352 109.237 16.1556C112.83 12.4842 110.848 5.47116 104.901 5.47116H99.5597C98.4187 5.47116 97.7355 6.17079 97.7355 7.33459V7.3329Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M75.4557 12.3916C77.9879 12.3916 78.4374 13.7573 79.2343 15.4525H72.3291C72.4395 14.0987 73.9295 12.3916 75.4574 12.3916H75.4557ZM69.5928 16.1185C69.5928 18.3704 69.6899 19.6048 70.9708 21.4985C73.4191 25.1211 77.9929 24.7444 80.0378 22.1292C80.7885 21.1706 81.4652 20.3516 80.6996 19.2819C79.5438 17.6674 78.1773 20.2069 78.1015 20.2843C75.8146 22.6253 72.5201 20.5719 72.3308 18.2493C73.6726 18.2493 80.698 18.4949 81.3549 18.0189C81.8077 17.691 82.0118 17.1763 81.9246 16.4464C81.6842 14.4384 81.2265 12.8457 79.8599 11.3573C77.3261 8.60089 72.9235 8.93389 70.7387 12.4976C70.2793 13.2477 69.5944 14.9648 69.5944 16.1202L69.5928 16.1185Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M46.1379 14.3892C46.1379 17.2802 46.8426 19.5809 48.5795 21.3451C51.5003 24.3117 55.7596 25.0568 59.1151 22.9865C63.162 20.489 60.6644 19.0477 60.34 19.0477C58.6673 19.0477 59.6255 19.2495 57.681 20.4587C52.1062 23.9216 46.0045 16.3871 50.4894 10.4521C52.014 8.43562 55.1406 7.68722 57.681 9.25465C59.0146 10.0787 59.2188 10.7985 59.9482 10.7985C61.0414 10.7985 63.0484 9.1302 58.8517 6.59574C55.544 4.59777 51.5003 5.38821 48.7755 8.16989C47.86 9.10497 47.6197 9.5086 47.0039 10.7531C46.505 11.7639 46.1362 12.9361 46.1362 14.3925L46.1379 14.3892Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M124.704 7.33463V22.3732C124.704 24.8051 127.571 24.5141 127.571 22.9063V6.80318C127.571 5.13148 124.704 4.84221 124.704 7.33631V7.33463Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M65.1612 11.1942C64.8237 9.9009 62.5549 10.3668 62.5549 11.7273V22.9062C62.5549 24.26 64.7167 24.6485 65.2798 23.2947C65.7227 22.2268 65.0806 15.7149 65.5844 14.5561C66.6035 12.2167 68.6204 13.4848 69.6363 12.9735C70.6554 12.4623 71.1098 10.2625 67.896 10.2625C66.5525 10.2625 65.9581 10.6476 65.1596 11.1942H65.1612Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M128.481 22.7731C128.481 24.8703 132 25.4438 132 22.5074C132 20.4186 128.481 20.3513 128.481 22.7731Z' fill='#274FED'/>
+                      <path fill-rule='evenodd' clip-rule='evenodd' d='M0 14.9259C0 18.7991 1.60034 22.8589 4.16877 25.4606C9.19534 30.5531 16.517 31.4579 22.5743 27.6823C23.1127 27.3476 23.9853 26.6816 24.4084 26.2544C28.0306 22.5881 27.4115 21.6362 27.4115 16.379V10.0386C27.4115 8.01374 28.0503 6.80117 28.9427 5.65923C30.0771 4.20952 31.8124 3.69994 33.7486 3.69994C38.4525 3.69994 41.4144 10.0403 37.6639 14.0396C36.3434 15.4473 34.0615 16.2158 31.9919 15.6625C31.3218 15.4826 31.3201 15.3228 30.515 15.3228C28.8785 15.3228 27.9367 18.0406 30.1413 18.8731C33.5889 20.1748 36.9427 19.2649 39.6774 17.0197C45.8269 11.9727 42.7711 0 33.3601 0C31.7746 0 29.9701 0.544901 28.9213 1.1453C26.5438 2.50755 24.7212 4.76115 24.1269 7.60674C23.7646 9.33899 23.9194 16.4563 23.9211 18.7553C23.9227 21.5135 23.3613 22.8791 21.1304 24.3574C16.7311 27.2719 10.7693 27.0937 7.07967 23.2794C6.19389 22.3645 5.30811 21.3201 4.73844 20.1243C2.93395 16.3336 3.28135 11.86 5.63575 8.39887C5.88765 8.02719 5.97985 7.99187 6.22517 7.68074C6.47543 7.36457 6.51824 7.27543 6.81953 6.96598C8.27169 5.47255 11.12 3.69994 13.9651 3.69994C15.5028 3.69994 16.1054 3.62931 17.6416 4.03966C18.7924 4.34743 18.6409 4.62493 20.0421 4.62493C21.2258 4.62493 21.4646 3.42917 21.4646 2.5126C21.4646 0.716443 16.8118 0.00336358 14.7405 0.00336358C12.2561 0.00336358 10.5141 0.593673 8.77221 1.30339C7.8996 1.65993 7.17681 2.11065 6.43756 2.61687C6.049 2.88259 5.76911 3.12141 5.41183 3.41908C5.20603 3.59063 5.14182 3.68649 4.94425 3.86644C3.78186 4.92429 2.79235 6.04268 2.02512 7.48734C1.75675 7.99356 1.58058 8.20042 1.34843 8.77727C0.609181 10.6104 0.00164644 12.3948 0.00164644 14.9293L0 14.9259Z' fill='#274FED'/>
+                    </svg>
+                </div>
+            </div>
+            <div class="heading">
+                <div class="name-email">
+                    <div class="name">
+                        <span>CHISOM EJIM</span>
+                    </div>
+                    <div class="email">
+                        <span style="font-family: axl;">chisom@company.com</span>
+                    </div>
+                </div>
+                <div class="name-date">
+                    <div class="name title">
+                        <span>Personal Credit Statement</span>
+                    </div>
+                    <div class="date">
+                        <span class="bold">From: </span>
+                        <span style="font-family: axl;">Sept 26, 2020</span>
+                        <span> - </span>
+                        <span style="font-family: axl;">Oct 26, 2020</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="info-summary">
+                <div class="left">
+                    <div class="topic"><span class="bold title sub-title">Statement Information</span></div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Card Type</span>
+                            <span class="td">Personal Credit Card</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Card Limit</span>
+                            <span class="td">250,000</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Statement date</span>
+                            <span class="td">Sept 26, 2020</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Payment due date</span>
+                            <span class="td">Oct 30, 2020</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Amount due</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Closing balance</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="right">
+                    <div class="topic"><span class="bold title sub-title">Account Summary</span></div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Opening balance</span>
+                            <span class="td">250,000</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Purchases</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Amount due</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Closing balance</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="rewards-disclaimer">
+                <div class="left">
+                    <div class="topic"><span class="bold title sub-title">Rewards Summary</span></div>
+                    <hr>
+                    <div class="th thead sub-title">
+                        <span class="tdata">Statement credit</span>
+                        <span class="tdata title">Credit balance</span>
+                        <span class="tdata title">***</span>
+                    </div>
+                    <hr>
+                    <div class="thead">
+                        <span class="tdata text">Previous credit earned</span>
+                        <span class="tdata text">Credits earned</span>
+                        <span class="tdata text">Credits redeemed</span>
+                    </div>
+                    <div class="thead">
+                        <span class="tdata text">***</span>
+                        <span class="tdata text">***</span>
+                        <span class="tdata text">***</span>
+                    </div>
+                    <hr>
+                    <div class="th thead sub-title">
+                        <span class="tdata">company points</span>
+                        <span class="tdata title">Points balance</span>
+                        <span class="tdata title">***</span>
+                    </div>
+                    <hr>
+                    <div class="thead">
+                        <span class="tdata text">Previous credit earned</span>
+                        <span class="tdata text">Credits earned</span>
+                        <span class="tdata text">Credits redeemed</span>
+                    </div>
+                    <div class="thead">
+                        <span class="tdata text">***</span>
+                        <span class="tdata text">***</span>
+                        <span class="tdata text">***</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="topic"><span class="bold title sub-title">Disclaimer</span></div>
+                    <hr>
+                    <div>
+                        <span class="text">
+                            Kindly examine this statement immediately. If no discrepancy is reported within 7 days from the statement date, the account will be considered as correct.
+                            Please settle this statement promptly.
+                            <br><br>
+                            If the minimum payment is not received by the due date, a late repayment charge of --% of your outstanding balance will be charged to your card account.
+                            <br><br>
+                            This will be calculated on a daily basis on the outstanding balance amount on this current statement.
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="transactions">
+                <div class="heading topic">
+                    <div class="left bold title sub-title">Your transactions</div>
+                    <div class="right note right-text">* For a detailed breakdown of the transactions on each card, log in to the company Business dashboard.</div>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="th">Post Date</span>
+                    <span class="th">Trans Date</span>
+                    <span class="th">Category</span>
+                    <span class="th">Transaction Description</span>
+                    <span class="th">Amount (₦)</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 830.00</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 830.00</span>
+                </div>
+                <hr>
+                 <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">Withdrawal</span>
+                    <span class="tdata text text-height">
+                        MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG- MC Loc
+                        POS Prch-092801735019--MALLMART HYPERMARKET.-
+                    </span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+                <div class="data-row">
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">28/09/2020</span>
+                    <span class="tdata text">purchase</span>
+                    <span class="tdata text text-height">MC Loc POS Prch-092801735019--MALLMART HYPERMARKET LANG NG-</span>
+                    <span class="tdata text"> - 1,335,515.25</span>
+                </div>
+                <hr>
+            </div>
+            <div class="info-summary payment">
+                <div class="left">
+                    <div class="topic"><span class="bold title sub-title">Payment Summary</span></div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="th">Past due/Over limit due</div>
+                        <div class="td right-text">₦0.00</div>
+                    </div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="th">Payment due</div>
+                        <div class="td right-text">₦39,636.00</div>
+                    </div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="th">Past due/Over limit due</div>
+                        <div class="td right-text">₦41,222.00</div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="right">
+                    <div class="topic"><span class="bold sub-title" style="color: white">Summary</span></div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Credit Limit</span>
+                            <span class="td">250,000</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Cash Advance Limit</span>
+                            <span class="td">***</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="div-table">
+                        <div class="cell">
+                            <span class="th">Interest on purchase</span>
+                            <span class="td">₦39,636.00</span>
+                        </div>
+                        <div class="cell">
+                            <span class="th">Interest on cash advance</span>
+                            <span class="td">***</span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="conclusion">
+                <div class="topic bold title sub-title">Payment Point</div>
+                <hr>
+                <div class="bold text text-height">
+                    Payments for your credit balance will be automatically debited from your repayment debit card added on the company Personal platform.
+                    Payments can also be made via bank transfer to the company Business account as displayed on your dashboard.
+                </div>
+                <br>
+                <div class="text text-height" style="font-family: axl;">
+                    Notify us immediately of any changes in your billing address or telephone number by filling in your new address in the coupon on the reverse of the statement or via your dashboard on company Business.
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
