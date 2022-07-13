@@ -18,10 +18,7 @@ const server = net.createServer(function (socket) {
       converter(data, socket);
     }
   });
-  // socket.on('data', function (message) {
-  //   const data = JSON.parse(message.toString());
-  //   converter(data, socket);
-  // })
+
   socket.on('error', function (error) {
     console.log(error);
   })
@@ -45,13 +42,6 @@ const converter = async (data, socket) => {
     let filepath = `${__dirname}/templates/temp.html`;
     await page.goto(`file://${filepath}`, { waitUntil: 'networkidle0' })
     const footerTemplate = footer();
-
-    // let filepath = `${__dirname}/templates/new.html`;
-    // await page.goto(`file://${filepath}`, { waitUntil: 'networkidle0' })
-    // const html = fs.readFileSync(`${__dirname}/templates/new.html`, 'utf8')
-    // await page.setContent(html, {
-    //   waitUntil: 'domcontentloaded'
-    // })
 
     const hash = crypto.randomBytes(20).toString('hex');
     const name =  (`${data.statement.user.name}_${data.statement.user.last_name}_${data.statement.id}_${hash}`).toLowerCase();
